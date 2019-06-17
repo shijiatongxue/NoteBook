@@ -1,0 +1,1 @@
+\$就是jQuery的一个简写形式，例如\$("#foo")等于jQuery("#foo")，\$.ajax等于jQueay.ajax。
