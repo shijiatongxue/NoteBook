@@ -267,4 +267,39 @@ m.delete(o); // => true
 m.has(o); // => false
 ```
 
-# Map属性和方法
+## Map属性和方法
+- size属性
+- set(key, value)
+- get(key)
+- has(key)
+- delete(key)
+- clear()
+
+遍历方法
+- keys()
+- values()
+- entries()
+- forEach()
+## WeakMap
+WeakMap与Map区别有两点：
+
+- 首先，WeakMap只接收对象作为键；
+
+- 其次，WeakMap的键所指对象不计入垃圾回收机制。
+
+它只有4个方法，且无法遍历：
+
+- get()
+- set()
+- has()
+- delete()
+
+```javascript
+let myElement = document.getElementById("logo");
+let myWeakmap = new WeakMap();
+myWeakmap.set(myElement, {timesClicked: 0});
+myElement.addEventListener('click', function(){
+    let logoData = myWeakmap.get(myElement);
+    logoData.timesClicked++;
+}, false);
+```
