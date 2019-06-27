@@ -45,3 +45,39 @@ export m; // 错误
 
 - export语句输出的接口与其对应的值是动态绑定关系；
 - export命令可以出现在模块顶层作用域的任意位置，不能在块作用域。
+
+# import命令
+```js
+// main.js
+import {firstName, lastName, year} from './profile';
+
+function setName(ele){
+    ele.textContent = firstName + ' ' + lastName;
+}
+```
+
+注意：
+- import命令有提升效果，会提升到整个模块的头部并首先执行；
+- 由于import是静态执行，所以不能使用表达式和变量；
+
+# 模块的整体加载
+```js
+import * as circle from './circle';
+```
+
+# export default命令
+```js
+// export-default.js
+export default function(){
+    console.log('foo');
+}
+```
+其他模块在加载该模块时，import命令可以为该匿名函数指定任意名字。
+```js
+import customName from './export-default';
+customName(); // 'foo'
+```
+
+注意：
+- 这时import命令后面不使用大括号；
+- 一个模块只能有一个默认输出，因此export default命令只能使用一次。所以import命令后面才不用加大括号，因为只能对应一个方法；
