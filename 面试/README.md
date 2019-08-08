@@ -28,7 +28,7 @@
 
 常见问题：
 
-- flex布局
+- [flex布局](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/%E5%B8%83%E5%B1%80/flexbox.md)
 - 如何画一个三角形
 - CSS3新增元素
 - W3C盒子和IE盒子
@@ -93,7 +93,7 @@
 - 如何计算一年有多少周
 - 内存泄漏
 - 实现异步的方法
-- 遍历数组的方法
+- [遍历数组的方法]()
 - 箭头函数的特性
 - MVVM
 # 网络 + Ajax
