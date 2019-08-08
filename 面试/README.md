@@ -94,7 +94,7 @@
 - 内存泄漏
 - 实现异步的方法
 - [遍历数组的方法](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86.md)
-- 箭头函数的特性
+- [箭头函数的特性](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)
 - MVVM
 # 网络 + Ajax
 重点：Ajax，DNS，HTTP
