@@ -111,6 +111,7 @@ flex布局包括两大元素，container和item。
 它的属性取值与align-items相同。
 
 Note：float，clear，vertical-align对flex item是没有影响的。
+
 ---
 
 [flex三栏布局](https://shijiatongxue.github.io/demo/box/flexbox.html)
