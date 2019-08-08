@@ -2,8 +2,8 @@
 
 把准备重点分为几大块：
 
-- HTML
-- 布局
+- [HTML](https://github.com/shijiatongxue/NoteBook/tree/master/%E9%9D%A2%E8%AF%95#html)
+- [布局](https://github.com/shijiatongxue/NoteBook/tree/master/%E9%9D%A2%E8%AF%95#%E5%B8%83%E5%B1%80)
 - UI
 - DOM操作
 - 网络 + Ajax
@@ -134,4 +134,4 @@
 
 - 大数的加减乘除
 - 链表的第一个交点
-- 括号匹配
+- [括号匹配](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D.md)
