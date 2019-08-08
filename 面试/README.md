@@ -64,6 +64,9 @@
 
 常见问题：
 
+- [遍历数组的方法](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86.md)
+- [箭头函数的特性](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)
+- [MVVM](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/MVVM.md)
 - BOM属性对象方法
 - 继承的种类
 - JavaScript的各种位置，如clientHeight等
@@ -93,9 +96,6 @@
 - 如何计算一年有多少周
 - 内存泄漏
 - 实现异步的方法
-- [遍历数组的方法](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86.md)
-- [箭头函数的特性](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)
-- MVVM
 # 网络 + Ajax
 重点：Ajax，DNS，HTTP
 
@@ -121,7 +121,7 @@
 - Gulp
 
 # 性能优化
-- Web项目性能优化
+- [Web项目性能优化](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5.md)
 # 数据结构和算法
 重点：快排，堆排。
 
