@@ -66,7 +66,7 @@
 
 - [遍历数组的方法](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86.md)
 - [箭头函数的特性](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)
-- [MVVM](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/MVVM.md)
+- [MVVM](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/JavaScript/MVVM.md)
 - BOM属性对象方法
 - 继承的种类
 - JavaScript的各种位置，如clientHeight等
