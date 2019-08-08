@@ -18,24 +18,93 @@
 # HTML
 重点：语义化，SEO基础，无障碍
 
+- H5新增元素
+- HTML5 Drag API
+- iframe
+- 
+
 # 布局
 重点：页面布局设计，媒体查询，CSS3
 
 页面布局设计：float，定位，显示模式，盒模型，flex布局，grid布局
+
+- 如何画一个三角形
+- CSS3新增元素
+- W3C盒子和IE盒子
+- 画一条0.5px的线
+- BFC
+- 边距折叠
+- transition和animation的区别
+- JS动画和CSS动画的区别
+- 多行文本省略号
+- 清除浮动
+- 如何实现图片在容器中居中
+- 如何实现元素垂直居中
+- height和line-height的区别
+- 属性选择器和伪类选择器的优先级
+- CSS画正方体
+- 实现一个两列等高布局，讲讲思路
 # UI
 掌握：SASS，Bootstrap
 
 了解：BEM架构
 
+
+
 # DOM操作
+
+- DOM的API有哪些？
+- DOM0和DOM2
 
 # JavaScript
 重点：ES6+模块化JavaScript，
 
 理解：变量提升，事件冒泡，作用域原型，Shadow DOM，严格模式，浏览器如何工作
 
+了解：
+
+- BOM属性对象方法
+- 继承的种类
+- JavaScript的各种位置，如clientHeight等
+- JS拖拽功能
+- JS防抖节流
+- JS垃圾回收
+- eval做什么的
+- 说一下CommonJS，AMD和CMD
+- 对象深度克隆的简单实现
+- 实现一个once函数，传入函数参数只执行一次
+- 将原生的ajax封装成Promise
+- JS监听对象属性的变化
+- == 和 === 的区别
+- setTimeOut和setInterval和requestAnimationFrame之间的区别
+- 自己实现一个bind函数
+- 用setTimeOut实现setInterval
+- 实现一个简单的Promise
+- 数组去重
+- 取出字符串首尾的空格
+- JS实现跨域
+- 不同类型的值如何比较
+- Virtual DOM
+- JS中String的startwith和indexOf方法的区别
+- 如何获取对象的属性
+- async和await具体该怎么用
+- JS轮播如何实现
+- 如何计算一年有多少周
+- 内存泄漏
+- 实现异步的方法
 # 网络 + Ajax
 重点：Ajax，DNS，HTTP
+
+- HTTP2.0 
+- GET和POST
+- XSS和CSRF攻击
+- Cookie有哪些字段可以设置
+- 跨域
+- Ajax响应状态
+- 进程间通信
+- 常用的状态码有哪些？
+- 跨域
+- Cookie和Session
 
 # 工具
 熟悉
@@ -44,6 +113,17 @@
 
 构建工具：Webpack，Gulp
 
+- Webpack
+- Gulp
+- 
+
 # 性能优化
+- 前端优化
+- 
 # 数据结构和算法
 重点：快排，堆排。
+
+- B树，B+树
+- 数据库的索引
+- 堆的插入与删除
+- 堆排序的复杂度

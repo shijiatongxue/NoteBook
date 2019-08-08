@@ -6,6 +6,10 @@
 # 测试
 # 渐进式Web应用
 重点：存储，Web Socket，Service Worker
+
+- WebSocket
+- PWA
+- Web Worker
 # 服务端渲染
 # 静态页面生成工具
 # 桌面应用程序
