@@ -65,7 +65,7 @@ xhr.setRequestHeader("MyHeader", "MyValue");
 Ajax也可以发送带参数的GET和POST方法。
 
 ```js
-// GET
+// 带参数的GET
 
 function addURLParam(url, name, value) {
     url += (url.indexOf('?') == -1 ? '?' : '&' );
@@ -82,10 +82,10 @@ xhr.open("get", url, false);
 ```
 
 ```js
-// POST
+// 带参数的POST
 
 xhr.open("post", "postexample.php", false);
-xhr.setRequest("Content-Type", "application/x-www-form-urlencode");
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencode");
 xhr.send(seralize(form));
 ```
 
