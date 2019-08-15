@@ -5,7 +5,7 @@
 
 Vue
 - [插槽](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/%E9%AB%98%E9%98%B6/%E6%A1%86%E6%9E%B6/%E6%8F%92%E6%A7%BD.md)
-- 路由
+- [路由](https://github.com/shijiatongxue/NoteBook/blob/master/%E9%9D%A2%E8%AF%95/%E9%AB%98%E9%98%B6/%E6%A1%86%E6%9E%B6/%E8%B7%AF%E7%94%B1.md)
 - Vuex
 - 兄弟组件通信
 - 生命周期
