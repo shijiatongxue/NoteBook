@@ -8,8 +8,8 @@ Vue
 - 路由
 - Vuex
 - 兄弟组件通信
-- Vue生命周期
-- Vue数据双向绑定
+- 生命周期
+- 数据双向绑定
 - axios
 # CSS in JS
 # 测试
