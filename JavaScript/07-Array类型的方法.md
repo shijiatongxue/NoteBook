@@ -57,7 +57,7 @@ ES5定义了一个**forEach**方法，可以按照所以的顺序按个传递给
 
 ```js
 var data = [1, 2, 3, 4, 5];
-var sunOfSquares = 0;
+var sumOfSquares = 0;
 data.forEach(function(x){
   sumOfSquares += x*x;
 });
@@ -122,7 +122,7 @@ slice(a [, b])不会修改调用的数组。两个参数分别代表起始位置
 
 ```js
 var a = [1, 2, 3, 4, 5];
-a.slice(0, 3); // >= [1. 2, 3]; 
+a.slice(0, 3); // >= [1, 2, 3]; 
 a.slice(3); // >= [4, 5], 省略了第二个参数
 a.slice(1, -1); 
 a.slice(-3, -2); 

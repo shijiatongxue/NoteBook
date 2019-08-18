@@ -84,7 +84,7 @@ flex布局包括两大元素，container和item。
 
 
 ## flex item的属性
-- order
+- **order**
 
 它可以设置为整数，控制项目的显示顺序。
 
