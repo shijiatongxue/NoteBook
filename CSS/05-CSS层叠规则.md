@@ -20,7 +20,7 @@ z-index属性只有和定位元素（position不为static）在一起的时候�
 
 ## 层叠顺序
 
-![图来自张鑫旭学长](../%5C%E5%9B%BE%E7%A4%BA%5Cstack-order.png)
+![图来自张鑫旭学长](./stack-order.png)
 
 图来自张鑫旭学长
 
