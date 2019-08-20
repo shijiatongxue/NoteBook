@@ -22,21 +22,25 @@
 - script中defer属性和async属性的区别 √
 - 事件委托 8.19 × 
 - 深拷贝和浅拷贝 8.19 √
+- 柯里化 8.20 √
+- MutationObserver √
+- 垃圾回收 √
+- 箭头函数与普通函数的区别 √
+- 数组遍历 √
+- Ajax √
+- 防抖和节流 √
+- Event Loop
 - 继承的种类
-- 箭头函数与普通函数的区别
 - 词法作用域和活动对象
-- Ajax
 - async和await
 - Promise
-- 如何将Ajax封装为Promise、
+- 如何将Ajax封装为Promise
 - 实现异步的方法
 - JavaScript跨域
 - clientHeight和offsetHeight等的区别
 - DOM0和DOM2
 - DOM API
 - BOM对象的方法
-- 内存泄漏
-- 垃圾回收
 - 模块化标准
 - Virtual DOM
 - MVVM
