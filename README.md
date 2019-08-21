@@ -29,7 +29,8 @@
 - 数组遍历 √
 - Ajax √
 - 防抖和节流 √
-- Event Loop
+- Event Loop √ 
+- 实现call、apply和bind函数 √
 - 继承的种类
 - 词法作用域和活动对象
 - async和await
