@@ -2,116 +2,36 @@
 
 学习改变世界。
 
-# JavaScript
+# JavaScript基础
 
-## 基本
+- 原型与原型链
+- 作用域与闭包
+- 异步单线程
 
-- 数据类型 √
-- 其他类型转数字 √
-- 其他类型转布尔值 √
-- == 和 === 的区别 √
-- 其他类型转字符串 √
-- String类型的方法 √
-- Array类型的方法 √
-- 操作符的优先级 √
-- 类型检测 √
-- 创建对象的3种方法 √
+# JavaScript API
 
-## 基础
+- Ajax
+- 事件绑定
 
-- script中defer属性和async属性的区别 √
-- 事件委托 8.19 × 
-- 深拷贝和浅拷贝 8.19 √
-- 柯里化 8.20 √
-- MutationObserver √
-- 垃圾回收 √
-- 箭头函数与普通函数的区别 √
-- 数组遍历 √
-- Ajax √
-- 防抖和节流 √
-- Event Loop √ 
-- 实现call、apply和bind函数 √
-- Promise里的代码为什么比setTimeout先执行？√
-- JSONP √
-- axios √
-- CORS √
-- Fetch √
-- 回调函数和Promise √
-- Generator和async
-- 继承的种类
-- 词法作用域和活动对象
-- async和await
-- 如何将Ajax封装为Promise
-- 实现异步的方法
-- JavaScript跨域
-- clientHeight和offsetHeight等的区别
-- DOM0和DOM2
-- DOM API
-- BOM对象的方法
-- 模块化标准
-- Virtual DOM
-- MVVM
+# 开发环境
+
+- 版本管理
+- 模块化
+- 打包工具
+
+# 运行环境
+
+- 页面渲染
 
 # CSS
 
-## 基本
-
-- 盒模型 √
-- 弹性布局 √
-- 水平居中与垂直居中 √
-- 浮动与定位 √
-
-## 基础
-
-- CSS层叠规则  √
-- BFC √
-- transition和animation
-
-## 练习
-
-- 画一个三角形
-- 画一条0.5px的线
-- 画正方体
-- 多行文本省略号
-- 两列等高布局
-
 # 计算机网络
-
-## 基本
-
-- 常用状态码
-- Cookie与Session
-- GET和POST
-- XSS和CSRF攻击
-
-## 基础
-
-- HTTP2.0 
-- Web跨域
-- Web缓存
-- 进程间通信
-- Ajax响应状态
 
 # 数据结构和算法
 
-## 基本
-
-- 快排
-- 插入排序
-- 堆排序
-
-## 基础
-
-- B树，B+树
-- 数据库的索引
-
 # 笔试面试
 
-- 网易笔试
-- 阿里面试
-- 美团面试
+# 笔记仓库
 
 # 小程序
-
-# 笔记仓库
 
