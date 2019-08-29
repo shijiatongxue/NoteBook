@@ -1,4 +1,4 @@
-# Vuex
+#   Vuex
 
 ![Vuex](./vuex.png)
 
@@ -298,7 +298,7 @@ const store = new Vuex.Store({
 
 ### Mutation必须是同步函数
 
-每一条mutation被记录，devtools都需要捕捉到前一状态和后一状态的快照。然而， 异步函数中的回调让着不可能完成。
+每一条mutation被记录，devtools都需要捕捉到前一状态和后一状态的快照。然而， 异步函数中的回调让着不可能完成。	
 
 ### 在组件中提交Mutaion
 
@@ -575,9 +575,31 @@ const moduleA = {
         └── products.js   # 产品模块
 ```
 
+```js
+// index.js
 
+import Vue from 'vue'
+import Vuex from 'vuex'
 
+import * as actions from './actions'
+import * as getters from './getters'
+import state from './state'
+import mutations from './mutations'
+import createLogger from 'vuex/dist/logger'
 
+Vue.use(Vuex)
+
+const debug = process.env.NODE_ENV !== 'production'
+
+export default new Vuex.Store({
+  actions,
+  getters,
+  state,
+  mutations,
+  strict: debug
+  plugins: debug ? [createLogger()] : []
+})
+```
 
 
 
