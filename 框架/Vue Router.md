@@ -474,5 +474,15 @@ scrollBehavior (to, from, savedPosition) {
 
 [文档](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)
 
-参考：[Vue Router](https://router.vuejs.org/zh/guide/)
+# 11 守卫
+
+官方的说法叫导航守卫，实际上就是发生在路由路径切换的时候，执行的一系列钩子函数。
+
+---
+
+参考：
+
+[Vue Router](https://router.vuejs.org/zh/guide/)
+
+Vue.js技术揭秘
 
