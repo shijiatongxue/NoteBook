@@ -81,6 +81,25 @@ console.log(2);
 
 JavaScript永不阻塞。处理I/O通常通过事件和回调来执行，所以当一个应用正等待一个XHR请求返回时，它仍然可以处理其他事情，比如用户输入。
 
+## 宏任务与微任务
+
+规范中规定task分为两大类，分别是macro task和micro task，并且每个macro task结束后，都要清空所有的micro task。
+
+```js
+for (macroTask of macroTaskQueue) {
+    // 1. Handle current MACRO-TASK
+    handleMacroTask();
+      
+    // 2. Handle all MICRO-TASK
+    for (microTask of microTaskQueue) {
+        handleMicroTask(microTask);
+    }
+}
+```
+
+- 宏任务：setTimeout、MessageChannel、postMessage、setImmediate
+- 微任务：MutationObserver和Promise.then。
+
 ---
 
 参考：
@@ -88,3 +107,5 @@ JavaScript永不阻塞。处理I/O通常通过事件和回调来执行，所以�
 MDN
 
 [阮一峰](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+
+[Vue.js技术揭秘]([https://ustbhuangyi.github.io/vue-analysis/reactive/next-tick.html#js-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6](https://ustbhuangyi.github.io/vue-analysis/reactive/next-tick.html#js-运行机制))
