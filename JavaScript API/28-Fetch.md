@@ -5,7 +5,7 @@ Fetch API提供了一个JavaScript接口，用于访问和操作HTTP管道的部
 注意，fetch规范与jQuery.ajax()主要有两种方式的不同，牢记：
 
 - 当接收到一个代表错误的HTTP状态码时，**从fetch()返回的Promise不会标记为reject**，相反它会将Promise状态标记为resolve，仅当网络故障或请求被阻止时，才会标记为reject。
-- 默认情况下，**fetch不会从服务端发送或接收任何cookie**s，如果站点依赖于用户session，则会导致未经认证的请求（要发cookies，必须设置credentials选项）。
+- 默认情况下，**fetch不会从服务端发送或接收任何cookies**，如果站点依赖于用户session，则会导致未经认证的请求（要发cookies，必须设置credentials选项）。
 
 ## 发送请求
 
