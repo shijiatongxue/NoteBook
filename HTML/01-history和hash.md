@@ -14,7 +14,7 @@ hash模式的原理：在window对象上监听onhashchange事件。
 
 ## history
 
-history利用了HTML5 history接口中新增的pushState和replaceState方法。这两个方法应用于浏览器记录栈，在当前已有的go、back、forward基础上，提供了对历史记录修改的能力。知识当它们执行修改时，虽然改变了URL，但浏览器不会立即向后端发送请求。
+history利用了HTML5 history接口中新增的pushState和replaceState方法。这两个方法应用于浏览器记录栈，在当前已有的go、back、forward基础上，提供了对历史记录修改的能力。只是当它们执行修改时，虽然改变了URL，但浏览器不会立即向后端发送请求。
 
 history模式的原理：hashchnage只能改变#后面的代码片段，history API则给了前端完全的自由，通过在window对象上监听popState()事件。
 

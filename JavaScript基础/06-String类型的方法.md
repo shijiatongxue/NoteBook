@@ -11,7 +11,7 @@ let str = 'hello';
 str[0]; // 'h'
 ```
 
-注意，方括号表达式在IE7以及更高版本会返回undefined。
+注意，方括号表达式在IE7以及更低版本会返回undefined。
 
 ## 字符串操作方法
 
