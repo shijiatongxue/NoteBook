@@ -198,7 +198,7 @@ const instance = axios.create({
 {
   url: '/user',
   method: 'get', // default
- 	baseURL: 'https://some-domain.com/api/',
+  baseURL: 'https://some-domain.com/api/',
   // PUT, POST, PATCH, DELETE only
   transformRequest: [function (data, headers) {
     // Do whatever you want to transform the data
@@ -242,7 +242,7 @@ const instance = axios.create({
 	validateStatus: function (status) {
     return status >= 200 && status < 300; // default
   },
- 	maxRedirects: 5,
+  maxRedirects: 5,
   socketPath: null, // default
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),

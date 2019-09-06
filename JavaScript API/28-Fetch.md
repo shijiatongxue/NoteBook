@@ -13,10 +13,10 @@ Fetch API提供了一个JavaScript接口，用于访问和操作HTTP管道的部
 fetch('http://shijia.com/movies.json')
 	.then(function(response){
   	// Response使用了Body定义的方法
-  	return response.json();
+  		return response.json();
 	})
 	.then(function(myJson){
-  	console.log(myJson);
+  		console.log(myJson);
 	})
 ```
 
@@ -108,7 +108,7 @@ else {
 注意：
 
 - 所有的IE浏览器都不支持fetch()方法
-- 服务器返回状态吗400或500的时候不会被reject
+- 服务器返回状态码400或500的时候不会被reject
 
 ## 使用Fetch
 
