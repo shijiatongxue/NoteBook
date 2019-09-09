@@ -154,6 +154,20 @@ git remote rename oldname newname
 git remote rm paul
 ```
 
+### 回滚
+
+- 本地回滚
+
+reset将分支的末端指向另一个提交，下次垃圾回收会把指针后面的删除。
+
+```bash
+git reset --hard <commit-id>
+# 或回退N
+git reset --hard HEAD~2 
+```
+
+--soft：缓存区和工作目录都不会改；--mixed：默认选项，缓存区和你制定的提交同步，但工作目录不受影响。--hard：缓存区和工作目录都同步到你指定的提交。
+
 ## Git分支
 
 ### 分支新建与合并
