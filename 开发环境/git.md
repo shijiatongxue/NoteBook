@@ -168,6 +168,15 @@ git reset --hard HEAD~2
 
 --soft：缓存区和工作目录都不会改；--mixed：默认选项，缓存区和你制定的提交同步，但工作目录不受影响。--hard：缓存区和工作目录都同步到你指定的提交。
 
+### 远程分支覆盖本地分支
+
+```bash
+git fetch -all
+get reset --hard origin/<brance>
+```
+
+
+
 ## Git分支
 
 ### 分支新建与合并

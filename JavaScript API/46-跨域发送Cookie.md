@@ -21,3 +21,4 @@ Access-Control-Allow-Credentials: true
 - Access-Control-Allow-Origin
 
 不允许使用通配符，只能指定单一域名，否则浏览器还是会挡住跨域请求。
+
