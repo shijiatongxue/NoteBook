@@ -194,6 +194,13 @@ git branch iss53
 git checkout iss53
 ```
 
+- 重命名分支
+
+```js
+git branch -m old new
+git push
+```
+
 - 删除分支
 
 ```bash
