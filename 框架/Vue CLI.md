@@ -41,6 +41,9 @@ vue --version
 
 ```bash
 vue create hello-world
+
+# 取代vue-cli 2.x
+# vue init
 ```
 
 - 使用图形化界面
