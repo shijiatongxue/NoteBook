@@ -22,5 +22,8 @@ BFC(Block Formatting Context)，简单讲，它是提供了一个独立布局的
 
 ---
 
-参考：[CSS布局中一个简单的应用BFC的例子](http://www.aliued.cn/2012/12/31/css布局中一个简单的应用bfc的例子.html)
+参考：
 
+[CSS布局中一个简单的应用BFC的例子](http://www.aliued.cn/2012/12/31/css布局中一个简单的应用bfc的例子.html)
+
+[什么是BFC?](https://juejin.im/post/5a4dbe026fb9a0452207ebe6)
