@@ -478,6 +478,148 @@ scrollBehavior (to, from, savedPosition) {
 
 官方的说法叫导航守卫，实际上就是发生在路由路径切换的时候，执行的一系列钩子函数。
 
+Vue-router提供的导航守卫主要用来通过跳转或取消的方式守卫导航。有多种机会植入路由导航过程中：全局的，单个路由独享的，或者组件级的。
+
+## 全局
+
+- beforeEach
+- beforeResolve
+- aferEach
+
+这三个钩子主要是用于登录验证，也就是路由还没跳转提前告知，以免跳转了再通知就晚了。
+
+### 全局前置守卫——beforeEach
+
+```js
+const router = new VueRouter({...})
+router.beforeEach((to, from, next) => {
+  // ...
+})
+```
+
+全局导航触发时，全局前置守卫按照创建顺序调用。守卫是异步解析执行，此时导航在所有守卫resolve完之前一直处于等待中。
+
+每个守卫方法接收三个参数：
+
+- to：Route：即将要进入的目标的路由对象
+- from：Route：当前导航正要离开的路由
+- next：Function：一定要调用该方法来resolve这个钩子。执行效果依赖next方法调用的参数。
+  - next()：进行管道中的下一个钩子。如果钩子执行完了，则导航的状态就是confirmed。
+  - next(false)：中断当前的导航。如果浏览器的URL改变了（可能是用户手动或者浏览器后退按钮），那么URL地址会重新回到from路由对应的位置（主要用于验证不通过的处理）。
+  - next(‘/’)或者next({path: ‘/’})：跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向next传递任意位置对象，且允许设置注入replace：true、name： ‘home’之类的选项以及然和用在router-link的to属性或router.push中的选项。
+  - next(error)：如果传入next参数是一个Error实例，则导航会被终止且该错误会被传递给router.onError()注册过的回调。
+
+**确保要调用next方法，否则钩子就不会被resolved。**
+
+### 全局解析守卫——beforeResolve
+
+> 2.5.0新增
+
+在2.5.0+可以使用router.beforeResolve注册一个全局守卫。这和router.beforeEach类似，区别是在导航被确认（afterEach）之前，同时在所有组件内守卫（beforeEach）和异步路由组件（beforeRouteEnter）被解析之后，解析守卫就被调用。
+
+### 全局后置钩子——aferEach
+
+你也可以注册全局后置钩子，然而和守卫不同的是，这些钩子不会接受next函数也不会改变导航本身。
+
+```js
+router.afterEach((to, from) => {
+  // ...
+})
+```
+
+## 路由级
+
+你可以在路由配置上直接定义**beforeEnter**守卫：
+
+```js
+const router = new VueRouter({
+  routes: [
+  	{
+  		path: '/foo',
+      component: Foo,
+      beforeEnter: (to, from, next) => {
+      	// ...
+      }
+    }
+  ]
+})
+```
+
+这些守卫和全局前置守卫的方法和参数是一样的。
+
+## 组件级
+
+最后，你可以在组件内直接定义以下路由导航守卫：
+
+- beforeRouteEnter
+- beforeRouterUpdate（2.2增加）
+- beforeRouterLeave
+
+```js
+const Foo = {
+ 	template: `...`,
+  beforeRouteEnter (to, from, next) {
+  	// 在渲染该组件的对应路由被confirm前调用
+  	// 不能获取组件实例this
+   	// 因为当守卫执行前，组件实例还没被创建
+  },
+  beforeRouteUpdate (to, from, next) {
+  	// 在当前路由改变，但是该组件被复用时调用
+    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和/foo/2 之间跳转的时候，
+   	// 由于会渲染同样的组件，因此组件实例会被调用。而这个钩子就会在这个情况下调用。
+    // 可以访问组件实例this
+  },
+	beforeRouteLeave (to, from, next) {
+ 		// 导航离开该组件的对应路由时调用
+    // 可以访问组件实例this
+  }
+}
+```
+
+这里离开守卫通常用来禁止用户在还未保存修改前突然离开。该导航可以通过next(false)来取消。
+
+```js
+beforeRouteLeave(to, from, next) {
+ 	const answer = window.comfirm('Do you really wan to leave? you have unsaved changes!')
+  if (answer) {
+  	next()
+  } else {
+		next()
+  }
+}
+```
+
+## 完整的导航解析流程
+
+1. 导航被触发。
+2. 在失活的组件里调用离开`beforeRouteLeave`守卫。
+3. 调用全局的 `beforeEach` 守卫。
+4. 在重用的组件里调用 `beforeRouteUpdate` 守卫 (2.2+)。
+5. 在路由配置里调用 `beforeEnter`。
+6. 解析异步路由组件。
+7. 在被激活的组件里调用 `beforeRouteEnter`。
+8. 调用全局的 `beforeResolve` 守卫 (2.5+)。
+9. 导航被确认。
+10. 调用全局的 `afterEach` 钩子。
+11. 触发 DOM 更新。(beforeCreate，created，beforeMount，mounted)
+12. 用创建好的实例调用 `beforeRouteEnter` 守卫中传给 `next` 的回调函数。
+
+## 实例
+
+```js
+// 登录
+
+router.beforeEach((to, from, next) => {
+  if (isLogin || to.name === 'login') {
+ 		next()
+  } else {
+    next({name: 'login'})
+  }
+}
+```
+
+
+
 ---
 
 参考：
@@ -486,3 +628,4 @@ scrollBehavior (to, from, savedPosition) {
 
 Vue.js技术揭秘
 
+[做个俗人](https://www.zhihu.com/people/tuo-yan-zheng-67-99)
