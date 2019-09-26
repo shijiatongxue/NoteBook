@@ -552,8 +552,8 @@ const router = new VueRouter({
 最后，你可以在组件内直接定义以下路由导航守卫：
 
 - beforeRouteEnter
-- beforeRouterUpdate（2.2增加）
-- beforeRouterLeave
+- beforeRouteUpdate（2.2增加）
+- beforeRouteLeave
 
 ```js
 const Foo = {
