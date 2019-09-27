@@ -87,22 +87,26 @@ git log
 
 ### 撤销操作
 
-- 撤销操作
+- 撤销对文件的修改（未add和commit）
 
 ```bash
-git commit --amend
+git checkout <file>
+
+// 或
+git checkout .
 ```
 
-- 取消暂存文件
+- 取消暂存的某个文件
 
 ```bash
 git reset HEAD <file>
 ```
 
-- 撤销对文件的修改
+- 修改上一次commit但不产生新的commit
 
 ```bash
-git checkout -- <file>
+git add <file>
+git commit --amend -m 'say something' 
 ```
 
 ### 远程仓库的使用
@@ -133,7 +137,7 @@ git fetch [remote-name]
 - 推送到远程仓库
 
 ```bash
-git push [remote-name] [brance-name]
+git push [remote-name] [branch-name]
 ```
 
 - 查看某个远程仓库
@@ -156,6 +160,35 @@ git remote rm paul
 
 ### 回滚
 
+- 将远程某文件回滚到某次提交
+
+```bash
+git log <filename>
+git checkout <commitID> <filename>
+```
+
+- 删除最后一次远程提交
+
+```bash
+git reset --hard HEAD^
+git push origin master -f
+```
+
+```bash
+# 或者
+git revert HEAD
+git push origin master
+```
+
+两者的区别，revert放弃指定提交的修改，但是会生成一次新的提交记录，需要填写提交注释，以前的历史记录都在；reset是将HEAD指向到指定提交，历史记录中不会出现放弃的提交记录。
+
+- 回滚某次提交
+
+```bash
+git log
+git revert <commitID>
+```
+
 - 本地回滚
 
 reset将分支的末端指向另一个提交，下次垃圾回收会把指针后面的删除。
@@ -172,10 +205,8 @@ git reset --hard HEAD~2
 
 ```bash
 git fetch -all
-get reset --hard origin/<brance>
+get reset --hard origin/<branch>
 ```
-
-
 
 ## Git分支
 
@@ -266,7 +297,7 @@ git merge experiment
 
 图：master分支的快进合并
 
-注意：无论是rebase还是三方merge，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同。rebase是将一系列提交按照原有次序一次应用到另一分支上，而merge是把最终结果何在一起。
+注意：无论是rebase还是三方merge，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同。rebase是将一系列提交按照原有次序一次应用到另一分支上，而merge是把最终结果合在一起。
 
 ## Git内部原理
 
