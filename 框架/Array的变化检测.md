@@ -344,5 +344,82 @@ export class Observer {
 
 ### 获取新增元素
 
+想要获取新增元素，我们需要在拦截器中对数组方法的类型进行判断。如果操作数组的方法是push、unshift和splice（可以新增数组的方法），则把参数中新增元素拿过来，来Observer来侦测。
+
+```js
+['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse']
+.forEach(function (method) {
+  // 缓存原始方法
+  const original = arrayProto[method]
+  def(arrayMethods, method, function mutator (..args) {
+      const result = original.apply(this, args)
+      const ob = this.__ob__
+      let inserted
+      switch (method) {
+        case 'push':
+        case 'unshift':
+          inserted = args
+          break
+        case 'splice':
+          inserted = args.slice(2)
+          break
+      }
+      ob.dep.notify() // 向依赖发送消息
+      return result
+  })
+})
+```
+
+在上面的代码中，我们通过switch对method进行判断，如果method是push、unshift、splice这种可以新增数组元素的方法，那么从args中将新增元素取出来，暂存在inserted中。
+
+接下来，我们要使用Observer把Inserted中的元素换成响应式的。
+
 ### 使用Observer侦测新增元素
+
+前面介绍过Observer会将自身的实例附加到value的\_\_ob\_\_属性上。所有被侦测了变化的数据都有一个_\_ob\_\_属性，数组元素也不例外。
+
+因此，我们可以在拦截器通过this访问到_\_ob\_\_，然后调用_\_ob\_\_上的observeArray方法就可以了：
+
+```js
+['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse']
+.forEach(function (method) {
+  // 缓存原始方法
+  const original = arrayProto[method]
+  def(arrayMethods, method, function mutator (..args) {
+      const result = original.apply(this, args)
+      const ob = this.__ob__
+      let inserted
+      switch (method) {
+        case 'push':
+        case 'unshift':
+          inserted = args
+          break
+        case 'splice':
+          inserted = args.slice(2)
+          break
+      }
+      if (inserted) ob.observeArray(inserted) // 新增
+      ob.dep.notify() // 向依赖发送消息
+      return result
+  })
+})
+```
+
+在上面的代码中，我们从this._\_ob\_\_上拿到Observer实例后，如果有新增元素，则使用ob.observeArray来侦测这些新增元素的变化。
+
+## 关于Array的问题
+
+对Array的变化检测是通过拦截原型方法实现的。正是因为这种实现方式，其实有些数组操作Vue.js是拦截不到的，例如：
+
+```js
+this.list[0] = 2
+```
+
+```js
+this.list.length = 0
+```
+
+因为Vue.js的实现方式决定了无法对上面两个例子做拦截，也就没有办法响应。
+
+
 

@@ -1,89 +1,19 @@
 # Virtual DOM
 
-![](./dom.png)
+## 什么是虚拟DOM
 
-上面是在浏览器创建一个div，可以看到它有这么多的属性。真正的DOM元素是非常庞大的，因为浏览器的标准就把DOM设计的非常复杂。当我们频繁的去做DOM更新，会产生一定的性能问题。
+通过状态生成一个虚拟节点树，然后使用虚拟节点树进行渲染。在渲染之前，会使用新生成的虚拟节点树和上一次生成的虚拟节点树进行对比，只渲染不同的部分。
 
-而Virtual DOM就是用一个原生的JS对象去描述一个DOM节点，所以它比创建一个DOM的代价要小得多。在Vue.js中，Virtual DOM是用```VNode```这么一个Class去描述：
+虚拟节点树其实是由组件树建立起来的整个虚拟节点（`vnode`）树。
 
-```js
-export default class VNode {
-  tag: string | void;
-  data: VNodeData | void;
-  children: ?Array<VNode>;
-  text: string | void;
-  elm: Node | void;
-  ns: string | void;
-  context: Component | void; // rendered in this component's scope
-  key: string | number | void;
-  componentOptions: VNodeComponentOptions | void;
-  componentInstance: Component | void; // component instance
-  parent: VNode | void; // component placeholder node
+## 为什么要引入虚拟DOM
 
-  // strictly internal
-  raw: boolean; // contains raw HTML? (server only)
-  isStatic: boolean; // hoisted static node
-  isRootInsert: boolean; // necessary for enter transition check
-  isComment: boolean; // empty comment placeholder?
-  isCloned: boolean; // is a cloned node?
-  isOnce: boolean; // is a v-once node?
-  asyncFactory: Function | void; // async component factory function
-  asyncMeta: Object | void;
-  isAsyncPlaceholder: boolean;
-  ssrContext: Object | void;
-  fnContext: Component | void; // real context vm for functional nodes
-  fnOptions: ?ComponentOptions; // for SSR caching
-  fnScopeId: ?string; // functional scope id support
+`Vue.js2.0`开始选择了一个中等粒度的解决方案吗，那就是引入了虚拟DOM。组件级别是一个`watcher`实例，就是说即便一个组件内有10个节点使用了某个状态，但其实也只有一个`watcher`在观察这个状态的变化。所以当这个状态发生变化时，只能通知到组件，然后组件内部通过虚拟DOM去对比与渲染。
 
-  constructor (
-    tag?: string,
-    data?: VNodeData,
-    children?: ?Array<VNode>,
-    text?: string,
-    elm?: Node,
-    context?: Component,
-    componentOptions?: VNodeComponentOptions,
-    asyncFactory?: Function
-  ) {
-    this.tag = tag
-    this.data = data
-    this.children = children
-    this.text = text
-    this.elm = elm
-    this.ns = undefined
-    this.context = context
-    this.fnContext = undefined
-    this.fnOptions = undefined
-    this.fnScopeId = undefined
-    this.key = data && data.key
-    this.componentOptions = componentOptions
-    this.componentInstance = undefined
-    this.parent = undefined
-    this.raw = false
-    this.isStatic = false
-    this.isRootInsert = true
-    this.isComment = false
-    this.isCloned = false
-    this.isOnce = false
-    this.asyncFactory = asyncFactory
-    this.asyncMeta = undefined
-    this.isAsyncPlaceholder = false
-  }
+`Vue.js1.0`在状态变化时，不需要对比可以直接对相应节点进行更新操作。但是，因为粒度太细，就会有很多watcher同时观察某些状态，会有一些内存开销以及一些依赖追踪的开销。
 
-  // DEPRECATED: alias for componentInstance for backwards compat.
-  /* istanbul ignore next */
-  get child (): Component | void {
-    return this.componentInstance
-  }
-}
-```
-
-可以看到Vue.js中的Virtual的定义还是略显复杂，因为它这里包含了很多Vue.js的特性。
-
-由于VNode只是用来映射到真是DOM的渲染，不需要包含操作DOM的方法，因此它是非常轻量和简单的。
-
-Virtual DOM除了它的数据结构的定义，映射到真实的DOM实际要经历VNode的create、diff、patch等过程。
+> Vue.js2.0使用了组件级别粒度，大大缩减了依赖数量和watcher数量。
 
 ---
 
-来自：Vue.js技术揭秘
+参考：深入浅出Vue.js
