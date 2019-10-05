@@ -79,11 +79,110 @@ export function createTextNode (val) {
 
 ```js
 export function cloneVNode (vnode, deep) {
-    
+	const cloned = new VNode(
+    	vnode.tag,
+        vnode.children,
+        vnode.text,
+        vnode.elm,
+        vnode.context,
+        vnode.componentOptions,
+        vnode.asyncFactory
+    )
+    cloned.ns = vnode.ns
+    cloned.isStatic = vnode.isStatic
+    cloned.key = vnode.key
+    cloned.isComment = vnode.isComment
+    cloned.isCloned = true
+    if (deep && vnode.children) {
+        cloned.children = cloneVNodes(vnode.children)
+    }
+    return cloned
 }
 ```
 
+可以看出，克隆现有节点时，只需要将现有节点的属性全部复制到新的节点中即可。
 
+克隆节点和被克隆节点的唯一区别是isCloned属性，克隆节点的isCloned为true，被克隆的原始节点的isCloned为false。
+
+### 元素节点
+
+元素节点通常会存在以下4种有效属性：
+
+- **tag：**tag就是一个节点的名称，如p、ul、li和div等。
+- **data：**该属性包含了一些节点上的数据，比如attrs、class和style等。
+- **children：**当前节点的子节点列表。
+- **context：**它是当前组件的Vue.js实例。
+
+例如，一个真实的元素节点：
+
+```html
+<p>
+    <span>Hello</span>
+    <span>Shi</span>
+</p>
+```
+
+所对应的的vnode是下面的样子：
+
+```js
+{
+    children: [VNode, VNode],
+    context: {...},
+    data: {...},
+    tag: "p",
+    ...
+}
+```
+
+### 组件节点
+
+组件节点和元素节点类似，有以下两个独有的属性。
+
+- componentOptions：顾名思义，就是组件节点的选项参数，其中包含propsData、tag和children等信息。
+- componentInstance：组件的实例，也是Vue.js的实例。事实上，在Vue.js中，每个组件都是一个Vue.js实例。
+
+一个组件节点：
+
+```html
+<child></child>
+```
+
+所对应的vnode是下面的样子：
+
+```js
+{
+    componentInstance: {...},
+    componentOptions: {...},
+    context: {...},
+    data: {...},
+    tag: "vue-component-1-child",
+    ...
+}
+```
+
+### 函数式组件
+
+函数式组件和组件节点类似，它有两个独有的属性functionalContext和functionalOptions。
+
+通常，一个函数式组件的vnode是下面的样子：
+
+```js
+{
+    functionContext: {...},
+    functionOptions: {...},
+    context: {...},
+    data: {...},
+    tag: "div"
+}
+```
+
+## 总结
+
+VNode是一个类，可以生成不同类型的vnode实例，而不同类型的vnode表示不同类型的真实DOM元素。
+
+由于Vue.js对组件采用了虚拟DOM来更新视图，当属性发生变化时，整个组件都要进行重新渲染的操作，但组件内并不是所有DOM节点都需要更新，所以将vnode缓存并将当前新生成的vnode和上一次缓存的oldVnode进行对比，只对需要更新的部分进行DOM操作可以提升更多性能。
+
+vnode有很多类型，它们本质上都是从VNode类实例化出的对象，其唯一区别只是属性不同。
 
 
 
