@@ -13,7 +13,7 @@ JSONP由两部分组成：回调函数和数据。回调函数的名字一般是
 http:freegeoip.net/json/?callback=handleResponse
 ```
 
-JSONP是通过动态script元素来使用的，使用时可以为src属性指定一个跨域URL。script和img元素类似，都有能力不受限制地从其他域加载资源。因为JSONP是有效的JavaScript代码，所以在请求完成后，即在JSONP响应加载到页面以后，就会立即执行。
+JSONP是通过动态script元素来使用的，使用时可以为src属性指定一个跨域URL。**script和img元素类似，都有能力不受限制地从其他域加载资源**。因为JSONP是有效的JavaScript代码，所以在请求完成后，即在JSONP响应加载到页面以后，就会立即执行。
 
 ```js
 // 一个例子

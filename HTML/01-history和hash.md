@@ -2,7 +2,7 @@
 
 hash前端路由，无刷新
 
-history回去请求接口
+history会去请求接口
 
 Vue是为了实现SPA，需要引入Vue Router。前端路由的核心是，改变视图的同时不会向后端发送请求。
 
@@ -10,7 +10,7 @@ Vue是为了实现SPA，需要引入Vue Router。前端路由的核心是，改�
 
 hash虽然出现在URL中，但不会被包含在HTTP请求中，对后端完全没有影响，因此改变hash不会重新加载页面。
 
-hash模式的原理：在window对象上监听onhashchange事件。
+hash模式的原理：在window对象上监听**onhashchange**事件。
 
 ## history
 
