@@ -378,7 +378,7 @@ export class Observer {
 
 前面介绍过Observer会将自身的实例附加到value的\_\_ob\_\_属性上。所有被侦测了变化的数据都有一个_\_ob\_\_属性，数组元素也不例外。
 
-因此，我们可以在拦截器通过this访问到_\_ob\_\_，然后调用_\_ob\_\_上的observeArray方法就可以了：
+因此，我们可以在拦截器通过this访问到\_\_ob\_\_，然后调用_\_\_ob\_\_上的observeArray方法就可以了：
 
 ```js
 ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse']
@@ -420,6 +420,3 @@ this.list.length = 0
 ```
 
 因为Vue.js的实现方式决定了无法对上面两个例子做拦截，也就没有办法响应。
-
-
-
