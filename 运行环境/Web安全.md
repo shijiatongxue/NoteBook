@@ -49,6 +49,8 @@ this.body = data;
 
 非法获取用户登录状态，对目标网站进行访问。
 
+上图中，form发起的POST请求不受到同源策略的限制，所以可以任意地使用其他域的Cookie向其他域发送POST请求。而token不同，浏览器不会自动添加到headers里。token一般存在客户端的cookie、sessionStorage或localStorage里。
+
 ```js
 // 诱导用户点击如下照片
 <img src="http://www.examplebank.com/withdraw?account=Alice&amount=1000&for=Badman">
@@ -59,7 +61,46 @@ this.body = data;
 - 检查Referer字段
 - 添加校验Token
 
-校验Token不保存在Cookie中，攻击者无法伪造。这种数据通常是窗体的一个数据项，服务器将其生成并附加在窗体中，其内容是一个伪随机数。当客户通过窗体提交请求时，这个随机数也提交上去以供校验。
+```js
+// 生成随机的csrf验证Token，并返回给前端界面
+this.session.csrf = md5(Math.random(0, 1).toString()).slice(5, 15);
+this.body = yield render('user/login', {
+  csrf: ctx.session.csrf;
+})
+
+// 提交时验证Token是否与源站的Token相同
+let csrf = this.request.body['csrf'];
+if (csrf !== this.session.csrf) {
+  res = {
+		code: 403,
+    msg: '不明网站来源提交'
+  }
+} else {
+  // 正常提交后的处理逻辑
+}
+```
+
+Token传递方式有两种：
+
+```http
+GET http://pinduoduo.com/api/xxx
+...
+Token: xxx
+```
+
+或在请求参数中传递：
+
+```js
+http://pinduoduo.com/api/xxx?token=xxx
+```
+
+前端通过Authorization属性发送token或者把数据放在POST请求体里：
+
+```js
+headers: {
+  "Authorization": xxx
+}
+```
 
 ---
 
@@ -70,3 +111,7 @@ this.body = data;
 [CSRF 攻击的应对之道](https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/index.html)
 
 [维基百科]([https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0](https://zh.wikipedia.org/wiki/跨站请求伪造))
+
+[HTML特殊字符编码对照表](https://www.jb51.net/onlineread/htmlchar.htm)
+
+[JSON Web Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
