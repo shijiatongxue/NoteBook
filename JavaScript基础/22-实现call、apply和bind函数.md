@@ -129,7 +129,7 @@ bind()函数有两个特点：
 ```js
 // 例子
 
-var foo = {vlaue: 1};
+var foo = {value: 1};
 function bar() {
   console.log(this.value);
 }
