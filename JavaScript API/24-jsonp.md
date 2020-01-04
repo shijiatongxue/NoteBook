@@ -1,29 +1,63 @@
 # JSONP
 
-JSONP是JSON with padding的简写，JSONP看起来与JSON差不多，只不过是被包含在函数调用中的JSON。
+JSONP 或 JSON-P 是一种通过 `<script>` 标签请求数据的 JavaScript 技术。它于 2005 年被 Bob Ippolito 提出。JSONP 可以绕过同源策略分享数据。
 
-```js
-callback({ "name": "Shi"});
+## 原理
+
+由于 `<script>` 属于跨域嵌入类型（见笔记[跨域](https://github.com/shijiatongxue/NoteBook/blob/master/运行环境/跨域.md)），它支持跨域执行。
+
+所以你可以：
+
+1. 在 `a.com` 执行 `<script>` 加载 `b.com` 的脚本。
+
+2. 在返回的消息中嵌入可以执行的脚本，其中带有需要的 JSON 数据。
+
+代码如下：
+
+```html
+// a.com
+
+<script>
+	function foo(data) {
+		alert('收到数据' + data.name);
+	}
+</script>
+<script src="http://localhost:3000?callback=foo"></script>
 ```
 
-JSONP由两部分组成：回调函数和数据。回调函数的名字一般是在请求中指定的。而数据就是传入回调函数中的JSON数据。
+```javascript
+// b.com nodejs代码
 
-```http
-// 一个典型的JSONP请求
-http:freegeoip.net/json/?callback=handleResponse
+const http = require('http');
+const url = require('url');
+
+http.createServer((req, res) => {
+  const data = {
+    name: 'hello jsonp'
+  }
+  const cb = url.parse(req.url, true).query.callback;
+  const resData = `${cb}(${JSON.stringify(data)})`;
+  res.writeHead(200);
+  res.end(resData);
+}).listen(3000);
 ```
 
-JSONP是通过动态script元素来使用的，使用时可以为src属性指定一个跨域URL。**script和img元素类似，都有能力不受限制地从其他域加载资源**。因为JSONP是有效的JavaScript代码，所以在请求完成后，即在JSONP响应加载到页面以后，就会立即执行。
+## 优缺点
 
-```js
-// 一个例子
-function handleResponse(response){
-    console.log(response.city, response.region_name);
-}
+优点：
 
-var script = document.createElement("script");
-script.src = "http://freegeoip.net/json/?callback=handleResonse";
-document.body.insertBefore(script, document.body.firstChild);
-```
+- 可以很简单的实现跨域
+- 兼容性很好，支持古老的浏览器
 
-参考：JavaScript高级程序设计
+缺点：
+
+- 只支持 GET 请求
+- 无法捕捉 JSONP 请求时的连接异常
+
+---
+
+参考：
+
+JavaScript高级程序设计
+
+[wikipedia](https://en.wikipedia.org/wiki/JSONP)
