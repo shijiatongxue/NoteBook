@@ -58,7 +58,7 @@ ReactDOM.render(element, document.getElementById('root'));
 ### 函数组件与 class 组件
 
 ```javascript
-function Welcome(props) {
+function Welcome(i) {
   return <h1>Hello, {props.name}</h1>;
 }
 ```

@@ -45,7 +45,6 @@ function counter(state=0, action) {
 // 组件通过 subscribe 方法订阅 state tree 的变化
 store.subscribe(() => console.log(store.getState()))
 
-
 // action
 store.dispatch({type: 'INCREMENT'})
 ```
