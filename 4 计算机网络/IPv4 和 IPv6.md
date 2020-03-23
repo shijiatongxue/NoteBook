@@ -1,4 +1,4 @@
-# IPv4和IPv6
+# IPv4 和 IPv6
 
 ![](ipv4-ipv6.jpg)
 
