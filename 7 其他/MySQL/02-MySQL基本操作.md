@@ -35,7 +35,7 @@ insert into 表名 values;
 
 select from 表名;
 
-update 表明 set;
+update 表名 set;
 
 delete from 表名;
 ```
@@ -77,14 +77,14 @@ create database db_3 charset utf8MB4 collate utf8mb4_general_ci;
 
 - 数据库名字：自定义名字
   - 数字、字母和下划线组成
-  - 不区分大小写
+  - **不区分大小写**
   - 数字不能开头
   - 使用下划线法创建复杂数据库名字
 - 数据库选项：非必须选项
   - 字符集：默认继承 DBMS
   - 校对集：依赖字符集
 
-###2.2 显示数据库
+### 2.2 显示数据库
 
 - 数据库的查看时根据用户权限限定的
 - 数据库的查看分为两者查看方式
@@ -225,8 +225,8 @@ create table t_1(
 ```mysql
 create table t_2(
 	name varchar(50),
-    age int,
-    gender varchar(10)
+  age int,
+  gender varchar(10)
 );
 ```
 
@@ -325,7 +325,7 @@ desc t_1;
 
 > 示例
 
-1. 修改表明 
+1. 修改表名
 
 ```mysql
 rename table t_1 to t1;
