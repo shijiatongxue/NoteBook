@@ -17,12 +17,25 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时。
 # 全局变量
 
 - Buffer
-
 - global
-
 - console
-- process
+
+## process
+
+process 是全局对象，提供当前 Node 进程的信息。
+
+- proceess.argv
+- process.chdir
+- process.cwd
+- process.env
+- process.nextTick(cb)
+- process.platform
+- process.versions
+
+---
+
 - module
+
 - exports
 - URL
 - URLSearchParams
@@ -46,3 +59,4 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时。
 - querystring：编码与解码 URL
 - url：处理与解析 URL
 - zlib：压缩功能
+
